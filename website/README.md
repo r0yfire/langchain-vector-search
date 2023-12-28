@@ -13,7 +13,7 @@ npm install
 Create a `.env.development` file in the root directory and add the following:
 
 ```bash
-LLM_ENDPOINT_URL=http://localhost:3000/dev/chat
+LLM_ENDPOINT_URL=http://localhost:3001/dev/chat
 NEXT_PUBLIC_LLM_ENDPOINT_URL=/api/chat
 LLM_API_KEY=<change me (will be generated when you deploy)>
 # You can enable basic auth by uncommenting the following line and changing the username and password

@@ -65,7 +65,7 @@ Stores a document on the vector database for later retrieval.
 | `topic` | `String` | Topic name (optional) |
 
 ```bash
-curl --location --request POST 'http://localhost:3000/dev/train' \
+curl --location --request POST 'http://localhost:3001/dev/train' \
 --header 'Content-Type: application/json' \
 --header 'x-api-key: API_KEY' \
 --data-raw '{
@@ -110,7 +110,7 @@ One-shot question answering with LLM assistance.
 | `topic` | `String` | Topic name (optional) |
 
 ```bash
-curl --location --request POST 'http://localhost:3000/dev/qa' \
+curl --location --request POST 'http://localhost:3001/dev/qa' \
 --header 'Content-Type: application/json' \
 --header 'x-api-key: API_KEY' \
 --data-raw '{
@@ -157,7 +157,7 @@ Conversational question answering with LLM assistance.
 - `gpt-3.5-turbo-16k`
 
 ```bash
-curl --location --request POST 'http://localhost:3000/dev/chat' \
+curl --location --request POST 'http://localhost:3001/dev/chat' \
 --header 'Content-Type: application/json' \
 --header 'x-api-key: API_KEY' \
 --data-raw '{
@@ -213,7 +213,7 @@ Similarity search for a given query. Returns raw vector search results.
 | `topic` | `String` | Topic name (optional) |
 
 ```bash
-curl --location --request POST 'http://localhost:3000/dev/search' \
+curl --location --request POST 'http://localhost:3001/dev/search' \
 --header 'Content-Type: application/json' \
 --header 'x-api-key: API_KEY' \
 --data-raw '{
