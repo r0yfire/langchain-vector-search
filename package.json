@@ -1,0 +1,21 @@
+{
+  "name": "vector-search",
+  "version": "1.0.0",
+  "description": "API to store text as vectors and search for similar text",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Roy Firestein <roy@autohost.ai>",
+  "license": "ISC",
+  "dependencies": {
+    "@pinecone-database/pinecone": "^1.1.2",
+    "langchain": "^0.0.212",
+    "pdf-parse": "^1.1.1"
+  },
+  "devDependencies": {
+    "serverless": "^3.38.0",
+    "serverless-bundle": "^6.1.0",
+    "serverless-offline": "^13.3.2"
+  }
+}

@@ -1,0 +1,8 @@
+ENV: ${self:custom.stage}
+STAGE: ${self:custom.stage}
+STAGE_NAME: ${self:custom.stage}
+OPENAI_API_KEY: "XXX"
+OPENAI_ORG_ID: "XXX"
+PINECONE_API_KEY: "XXX"
+PINECONE_ENVIRONMENT: "us-central1-gcp"
+DB_NAME: "my-db"

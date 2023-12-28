@@ -1,0 +1,88 @@
+service: vector-search
+
+plugins:
+  - serverless-bundle
+  - serverless-offline
+
+package:
+  excludeDevDependencies: true
+  individually: false
+  exclude:
+    - .git/**
+    - .vscode/**
+    - .test/**
+
+custom:
+  region: ${self:provider.region}
+  stage: ${opt:stage, self:provider.stage}
+  prefix: ${self:custom.stage}-${self:service}
+  service: "vector-search"
+  serverless-offline:
+    host: '0.0.0.0'
+    httpPort: 3000
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  architecture: arm64
+  stage: ${opt:stage, 'dev'}
+  region: us-east-1
+  logRetentionInDays: 14
+  stackTags:
+    service: ${self:custom.service}
+    env: ${opt:stage, 'dev'}
+  tags:
+    service: ${self:custom.service}
+    env: ${opt:stage, 'dev'}
+  timeout: 60
+  memorySize: 256
+  versionFunctions: false
+  environment:
+    ${file(./configs/${self:provider.stage}.yml)}
+  apiGateway:
+    usagePlan:
+      quota:
+        limit: 1000
+        period: DAY
+    apiKeys:
+      - ${self:custom.service}-${self:provider.stage}-chatapp
+## Uncomment the key below when using serverless-offline
+#      - name: local
+#        value: API_KEY
+
+functions:
+  upload:
+    handler: src/handler.documentUpload
+    events:
+      - http:
+          path: /train
+          method: post
+#          private: true
+  qa:
+    handler: src/handler.questionAnswer
+    events:
+      - http:
+          path: /qa
+          method: post
+#          private: true
+  chat:
+    handler: src/handler.chat
+    events:
+      - http:
+          path: /chat
+          method: post
+#          private: true
+  search:
+    handler: src/handler.search
+    events:
+      - http:
+          path: /search
+          method: post
+#          private: true
+# Uncomment the key below if you want to use the reset your vector index
+#  reset:
+#    handler: src/handler.reset
+
+# Infrastructure (CloudFormation)
+resources:
+  Description: "Vector Search API Stack"
