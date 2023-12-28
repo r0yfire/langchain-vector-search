@@ -9,23 +9,13 @@ import Tooltip from "@mui/material/Tooltip";
 export const AgentTypes = [
     {
         name: 'docs',
-        title: 'Documentation Agent',
-        help: 'This agent has access to all public documentation and can help with general questions.'
-    },
-    {
-        name: 'slack',
-        title: 'Slack Agent',
-        help: 'This agent has access to most internal Slack messages and can help with general questions.'
-    },
-    {
-        name: 'notion',
-        title: 'Notion Agent',
-        help: 'This agent has access to most internal Notion pages and can help with general questions.',
+        title: 'WhatsApp Agent',
+        help: 'This agent has access to all WhatsApp messages and can help with general questions.'
     },
     {
         name: 'pirate',
         title: 'Pirate Agent',
-        help: 'Documentation agent, but with a pirate accent.'
+        help: 'WhatsApp agent, but with a pirate accent.'
     },
 ];
 

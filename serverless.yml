@@ -23,6 +23,7 @@ custom:
 
 provider:
   name: aws
+  profile: firestein
   runtime: nodejs20.x
   architecture: arm64
   stage: ${opt:stage, 'dev'}
@@ -57,28 +58,28 @@ functions:
       - http:
           path: /train
           method: post
-#          private: true
+          private: true
   qa:
     handler: src/handler.questionAnswer
     events:
       - http:
           path: /qa
           method: post
-#          private: true
+          private: true
   chat:
     handler: src/handler.chat
     events:
       - http:
           path: /chat
           method: post
-#          private: true
+          private: true
   search:
     handler: src/handler.search
     events:
       - http:
           path: /search
           method: post
-#          private: true
+          private: true
 # Uncomment the key below if you want to use the reset your vector index
 #  reset:
 #    handler: src/handler.reset

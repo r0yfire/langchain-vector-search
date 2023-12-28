@@ -246,7 +246,7 @@ export default function Home() {
 
                     <div className={styles.footer}>
                         <p style={{textAlign: 'center'}}>
-                            &copy; Autohost Inc. {new Date().getFullYear()}
+                            &copy; Firestein {new Date().getFullYear()}
                         </p>
                     </div>
                 </div>
