@@ -28,14 +28,6 @@ export const getPineconeVectorStore = async (options: GetPineconeClientProps): P
         typeof indexNameString === 'string' ? indexNameString : indexName,
     );
 
-    // Check namespace exists
-    const indexStats = await pineconeIndex.describeIndexStats();
-    const namespaces = Object.keys(indexStats.namespaces || {});
-    if (!namespaces.includes(namespace || '')) {
-        console.warn(`Namespace "${namespace}" does not exist in index "${indexName}"`);
-        throw new Error(`There are no documents for your namespace`);
-    }
-
     // Return the VectorStore
     return await PineconeStore.fromExistingIndex(
         new OpenAIEmbeddings(),

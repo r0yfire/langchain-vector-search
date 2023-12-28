@@ -158,8 +158,8 @@ export default function Home() {
     return (
         <>
             <Head>
-                <title>Autohost Chat</title>
-                <meta name="description" content="Autohost documentation chatbot"/>
+                <title>Firestein ChatGPT</title>
+                <meta name="description" content="Firestein chatbot"/>
                 <meta name="viewport" content="width=device-width, initial-scale=1"/>
                 <link rel="icon" href="/favicon_192x192.png" sizes="192x192" type="image/png"/>
             </Head>
