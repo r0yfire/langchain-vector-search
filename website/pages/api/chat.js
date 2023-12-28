@@ -17,13 +17,11 @@ export const chat = async (req, res) => {
     // Handle pirate agent
     if (req.body.topic === 'pirate') {
         reqProps.topic = 'whatsapp';
-        reqProps.systemPrompt = 'You are a pirate from Hook Enterprises who loves to help people and crack jokes! You answer in pirate language, and end with a pirate joke.';
     }
 
     // Handle docs agent
     if (req.body.topic === 'docs') {
         reqProps.topic = 'whatsapp';
-        reqProps.systemPrompt = 'You are a documentation agent who loves to help people! You answer in plain English, and end with a documentation link.';
     }
 
     // Send request to API
