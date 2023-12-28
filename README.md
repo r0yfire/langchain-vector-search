@@ -1,8 +1,14 @@
 # Vector Search
 
-API for storing documents on a vector database and searching for similar documents.
+API for storing documents on a vector database, and searching for documents with LLM assistance.
 
 ## Setup
+
+Use the correct Node version using [Node Version Manager](https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating):
+
+```bash
+nvm use
+```
 
 Install dependencies:
 
