@@ -22,6 +22,22 @@ Create a config file for your environment and fill in the values:
 cp configs/example-dev.yml configs/dev.yml
 ```
 
+Required values:
+
+- `OPENAI_API_KEY` - Your OpenAI API key
+- `OPENAI_ORG_ID` - Your OpenAI organization ID
+- `PINECONE_API_KEY` - Your Pinecone API key
+- `PINECONE_ENVIRONMENT` - Your Pinecone environment name
+
+## Other Vector Databases
+
+While this project uses Pinecone, you can easily replace it with any other [vector database that langchain supports](https://js.langchain.com/docs/integrations/vectorstores).
+
+1. Copy the `src/lib/store-pinecone.ts` file and rename it to `src/lib/store-<your_database>.ts`
+2. Edit the file and implement the `getPineconeVectorStore` function
+3. Change the import in `src/lib/knowledge.ts` to your new file
+4. Done!
+
 ## Deployment
 
 Deploy using Serverless API:
