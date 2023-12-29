@@ -32,6 +32,11 @@ export const ModelTypes = [
         title: 'GPT 4',
         help: 'The default GPT-4 model is smarter than GPT-3, but it supports fewer tokens and may be slower.'
     },
+    {
+        name: 'private',
+        title: 'Alon',
+        help: 'The custom trained model of Alon Firestein.'
+    },
 ];
 
 export const SelectModelDropdown = React.forwardRef(function SelectModelDropdown(props, ref) {

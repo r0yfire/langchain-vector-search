@@ -20,7 +20,7 @@ type ConversationalRetrievalQAChainInput = {
 type QueryChatInputType = {
     messages: ChatMessage[];
     systemPrompt?: string;
-    model?: 'gpt-4' | 'gpt-4-1106-preview' | 'gpt-3.5-turbo' | 'gpt-3.5-turbo-1106' | 'gpt-3.5-turbo-16k';
+    model?: 'gpt-4' | 'gpt-4-1106-preview' | 'gpt-3.5-turbo' | 'gpt-3.5-turbo-1106' | 'gpt-3.5-turbo-16k' | 'private';
     namespace?: string;
 };
 
@@ -41,8 +41,37 @@ export const queryVectorStoreAndChatLLM = async (Props: QueryChatInputType) => {
     // Retrieve the Pinecone VectorStore
     const vectorStore = await getPineconeVectorStore({namespace});
 
+    // Call the model directly if private
+    if (model === 'private') {
+        const llm = new OpenAI({
+            modelName: model === 'private' ? process.env.MODEL_NAME : model,
+            temperature: 0.6,
+            topP: 1,
+            frequencyPenalty: 0.35,
+            presencePenalty: 0.0,
+            maxTokens: 45,
+            bestOf: 3,
+            stop: ['\n'],
+        });
+
+        const lastMessage = messages[messages.length - 1];
+        const prompt = lastMessage.role === 'user' ? lastMessage.content : formatChatHistory(messages);
+        const response = await llm.invoke(prompt.trim());
+        messages.push({
+            role: 'assistant',
+            content: (response || '').trim(),
+        });
+        return {
+            messages: messages,
+            result: messages[messages.length - 1].content,
+            references: [],
+        }
+    }
+
     // Retrieve the LLM
-    const llm = new OpenAI({modelName: model || 'gpt-3.5-turbo-1106'});
+    const llm = new OpenAI({
+        modelName: model || 'gpt-3.5-turbo-1106',
+    });
 
     // Create retriever
     const retriever = vectorStore.asRetriever();
